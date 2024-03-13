@@ -6,6 +6,7 @@ import {auth} from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/UserSlice";
+import { BACKGROUND_IMG, USER_PROFILE } from "../utils/constants";
 
 
 const Login = () => {
@@ -14,7 +15,7 @@ const Login = () => {
     const email = useRef(null);
     const name = useRef(null)
     const password = useRef(null)
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const dispatch = useDispatch()
 
 
@@ -41,7 +42,7 @@ if(!isLoginForm) {
     console.log(user);
 
     updateProfile(user, {
-      displayName: name.current.value, photoURL: "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg"
+      displayName: name.current.value, photoURL: USER_PROFILE
     }).then(() => {
       // Profile updated!
       const {uid, email, displayName, photoURL} = auth.currentUser;
@@ -58,7 +59,7 @@ if(!isLoginForm) {
     });
     
 
-    navigate("/browse")
+    // navigate("/browse")
     // ...
   })
   .catch((error) => {
@@ -77,7 +78,7 @@ if(!isLoginForm) {
     const user = userCredential.user;
     // ...
     console.log(user);
-    navigate("/browse")
+    // navigate("/browse")
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -98,7 +99,7 @@ if(!isLoginForm) {
       <div className="">
         <img
           className="w-full h-screen"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/93da5c27-be66-427c-8b72-5cb39d275279/94eb5ad7-10d8-4cca-bf45-ac52e0a052c0/IN-en-20240226-popsignuptwoweeks-perspective_alpha_website_small.jpg"
+          src={BACKGROUND_IMG}
           alt=""
         />
 
