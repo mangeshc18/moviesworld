@@ -8,13 +8,13 @@ import { addUser, removeUser } from '../utils/UserSlice';
 const Header = () => {
   const navigate = useNavigate()
   const user = useSelector(store => store.user)
-  console.log(user);
+  // console.log(user);
   const dispatch = useDispatch()
 
 
   useEffect(() => {
 
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
@@ -34,9 +34,9 @@ const Header = () => {
     });
   
   
+    return () => unsubscribe();
   
   }
-  
   
   
   ,[])
@@ -50,7 +50,7 @@ const Header = () => {
   
     }).catch((error) => {
       // An error happened.
-      console.log(error.message);
+      // console.log(error.message);
     });
   }
 

@@ -1,14 +1,21 @@
-import React from 'react'
+
 import Header from './Header'
-import { BACKGROUND_IMG } from '../utils/constants'
+
+import useNowPlayingMovies from '../Hooks/userNowPlayingMovies'
+import MainContainer from './MainContainer';
 
 const Browse = () => {
+
+useNowPlayingMovies();
+
+  
   return (
     <div>
       <Header />
-      <img className='relative' src={BACKGROUND_IMG} alt="" />
+    
+      <MainContainer />
     </div>
   )
 }
 
-export default Browse
+export default Browse;
